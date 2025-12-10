@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка - MINECRAFT Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(42, 42, 42, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff4444, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 68, 68, 0.5);
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+        }
+        
+        .security-notice {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 68, 68, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ff4444;
+            font-size: 0.9rem;
+            color: #ffcccc;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(76, 175, 80, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0; 
+            }
+            50% { 
+                transform: translateY(-100px) rotate(180deg); 
+                opacity: 1; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="error-container">
+        <div class="error-code" id="errorCode">403</div>
+        <h1 class="error-title">🛡️ Доступ заблокирован</h1>
+        <p class="error-message">
+            Обнаружена подозрительная активность или нарушение правил безопасности.
+            <br>Ваш запрос был заблокирован системой защиты.
+        </p>
+        
+        <a href="/" class="back-button">🏠 Вернуться на главную</a>
+        
+        <div class="security-notice">
+            <strong>⚠️ Внимание:</strong> Все попытки несанкционированного доступа регистрируются и передаются администрации.
+        </div>
+    </div>
+
+    <script>
+        // Создаем частицы
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+        
+        // Определяем тип ошибки по URL или коду
+        function setErrorType() {
+            const errorCode = document.getElementById('errorCode');
+            const title = document.querySelector('.error-title');
+            const message = document.querySelector('.error-message');
+            
+            const path = window.location.pathname;
+            
+            if (path.includes('404')) {
+                errorCode.textContent = '404';
+                title.textContent = '📄 Страница не найдена';
+                message.innerHTML = 'Запрашиваемая страница не существует или была перемещена.<br>Проверьте правильность адреса.';
+            } else if (path.includes('500')) {
+                errorCode.textContent = '500';
+                title.textContent = '⚙️ Ошибка сервера';
+                message.innerHTML = 'Внутренняя ошибка сервера. Мы уже работаем над её устранением.<br>Попробуйте позже.';
+            } else if (path.includes('403')) {
+                errorCode.textContent = '403';
+                title.textContent = '🛡️ Доступ заблокирован';
+                message.innerHTML = 'Обнаружена подозрительная активность или нарушение правил безопасности.<br>Ваш запрос был заблокирован системой защиты.';
+            }
+        }
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setErrorType();
+            
+            // Логируем попытку доступа
+            console.log('%c🚫 НЕСАНКЦИОНИРОВАННЫЙ ДОСТУП', 'color: red; font-size: 20px; font-weight: bold;');
+            console.log('Время:', new Date().toLocaleString());
+            console.log('IP будет заблокирован при повторных попытках');
+        });
+        
+        // Блокируем DevTools на странице ошибки
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === 123 || 
+                (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+                (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+    </script>
+</body>
+</html>
