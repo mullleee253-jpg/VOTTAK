@@ -473,8 +473,8 @@ document.addEventListener('DOMContentLoaded', function() {
     addScrollAnimations();
     addCustomCursor();
     
-    // Раскомментируй для добавления снега (зимняя тема)
-    // addSnowEffect();
+    // Добавляем снежинки
+    addSnowEffect();
     
     // Добавляем плавное появление страницы
     document.body.style.opacity = '0';
