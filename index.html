@@ -3,14 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RomauWorld - Лучший MINECRAFT сервер</title>
+    <title>RomauWorld - Лучший MINECRAFT сервер 🎄</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newyear.css">
 </head>
 <body>
+    <!-- Новогодний отсчет -->
+    <div id="countdown-container" class="countdown-container">
+        <div class="countdown-content">
+            <h2>🎄 До Нового Года осталось 🎄</h2>
+            <div class="countdown-timer">
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">00</span>
+                    <span class="countdown-label">дней</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">00</span>
+                    <span class="countdown-label">часов</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">00</span>
+                    <span class="countdown-label">минут</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">00</span>
+                    <span class="countdown-label">секунд</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер для снега -->
+    <div id="snow-container"></div>
+    
+    <!-- Контейнер для фейерверков -->
+    <div id="fireworks-container"></div>
+
     <!-- Навигация -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo no-select">⛏️ RomauWorld</div>
+            <div class="logo no-select">🎄 RomauWorld ❄️</div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
                 <li><a href="#about">О сервере</a></li>
@@ -26,8 +58,8 @@
     <!-- Главный экран -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="glitch" data-text="Добро пожаловать!">Добро пожаловать!</h1>
-            <p class="hero-subtitle">Добро пожаловать в RomauWorld - мир бесконечных приключений!</p>
+            <h1 class="glitch" data-text="🎄 С Новым Годом! 🎄">🎄 С Новым Годом! 🎄</h1>
+            <p class="hero-subtitle">Добро пожаловать в RomauWorld - мир новогодних приключений! ❄️</p>
             <div class="server-info">
                 <div class="info-box">
                     <span class="status online">●</span>
@@ -347,5 +379,6 @@
 
     <script src="security-light.js"></script>
     <script src="script.js"></script>
+    <script src="newyear.js"></script>
 </body>
 </html>
