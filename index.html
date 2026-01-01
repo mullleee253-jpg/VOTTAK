@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Контейнер для конфетти -->
+    <canvas id="confetti-canvas"></canvas>
+
     <!-- Навигация -->
     <nav class="navbar">
         <div class="container">
@@ -26,18 +29,19 @@
     <!-- Главный экран -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="glitch" data-text="Добро пожаловать!">Добро пожаловать!</h1>
-            <p class="hero-subtitle">Добро пожаловать в RomauWorld - мир бесконечных приключений!</p>
+            <h1 class="glitch" data-text="🎉 Мы открылись! 🎉">🎉 Мы открылись! 🎉</h1>
+            <p class="hero-subtitle">Добро пожаловать в RomauWorld - сервер уже работает!</p>
             <div class="server-info">
                 <div class="info-box">
                     <span class="status online">●</span>
-                    <span>Сервер скоро откроется!</span>
+                    <span>Сервер ОНЛАЙН!</span>
                 </div>
-                <div class="info-box ip-box no-select">
-                    <span>IP: Скоро будет объявлен</span>
+                <div class="info-box ip-box" onclick="copyIP()" style="cursor: pointer;">
+                    <span>IP: node-fi-free-03.tickhosting.com:40548</span>
+                    <span style="font-size: 0.8rem; opacity: 0.7;">📋 Нажми чтобы скопировать</span>
                 </div>
             </div>
-            <a href="#about" class="btn btn-primary">Узнать больше</a>
+            <a href="#donate" class="btn btn-primary">Начать играть!</a>
         </div>
         <div class="hero-bg"></div>
     </section>
